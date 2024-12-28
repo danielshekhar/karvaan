@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARVAAN - Frequently Asked Questions</title>
+    <style>
+        /* Include the styles you provided */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        :root {
+            --primary: #FF69B4;
+            --secondary: #4169E1;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --light: #f8fafc;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            opacity: 1;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-container img {
+            height: 40px;
+            width: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .menu-container {
+            position: relative;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--dark);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: calc(100% + 1rem);
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a {
+            display: block;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .nav-links.active {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            margin-top: 10rem;
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 5% auto;
+        }
+
+        .faq-container h1 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .faq {
+            background: var(--light);
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .faq h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        .faq p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .faq:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq.open p {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar section -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo-container">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/003/659/019/small_2x/pink-blue-k-alphabet-letter-logo-for-business-and-company-with-gradient-design-pastel-colour-template-for-corporate-identity-vector.jpg" alt="Karvaan Logo">
+                <span class="logo-text">Karvaan</span>
+            </div>
+            
+            <div class="menu-container">
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+    
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="features.html">Features</a>
+                    <a href="co.html">Courses</a>
+                    <a href="support.html">Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Section -->
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq">
+            <h3>What courses do you offer?</h3>
+            <p>We offer over 3000 courses, including university degree courses from top institutions such as MIT, Harvard, and more. All these courses are free to access.</p>
+        </div>
+
+        <div class="faq">
+            <h3>How much do the courses cost?</h3>
+            <p>The majority of our courses are available for free. However, for customized degrees or to choose from multiple degree options, a subscription is required, starting as low as 2$ per month.</p>
+        </div>
+
+        <div class="faq">
+            <h3>How can I earn a degree from top universities?</h3>
+            <p>We offer degree courses from prestigious universities like MIT and Harvard. These courses are free to learn, and you can earn a certificate upon completion. For degrees, you may need to Download The Karvaan application on your device.</p>
+        </div>
+
+        <div class="faq">
+            <h3>What is the community feature?</h3>
+            <p>Our community feature allows you to interact with fellow learners, share ideas, collaborate on projects, and learn together. It’s a great way to connect and enhance your learning experience.</p>
+        </div>
+
+        <div class="faq">
+            <h3>How can I win the $10,000 prize?</h3>
+            <p>Every 6 months, we will award a $10,000 prize to the top 3 ideas submitted by learners. You can participate by collaborating on projects, sharing ideas, and being an active member of the community.</p>
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Karvaan</h4>
+                <ul>
+                    <li><a href="story.html">My Story</a></li>
+                  
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#windows">Windows App</a></li>
+                    <li><a href="#macos">macOS App</a></li>
+                    <li><a href="#linux">Linux App</a></li>
+                    <li><a href="#mobile">Mobile Apps</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="support.html">Help Center</a></li>
+                    <li><a href="support.html">Contact Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                   
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for FAQ toggle functionality
+        const faqs = document.querySelectorAll('.faq');
+
+        faqs.forEach(faq => {
+            faq.querySelector('h3').addEventListener('click', () => {
+                faq.classList.toggle('open');
+            });
+        });
+
+        // JavaScript for hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
+
