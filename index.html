@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karvaan - Transform Your Learning Journey</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #FF69B4;
+            --secondary: #4169E1;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --light: #f8fafc;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fcfcfc;
+        }
+/* Navbar Base Styles */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+}
+
+.logo-container img {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.menu-container {
+    position: relative;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+}
+
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--dark);
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.nav-links {
+    display: none; /* Hide links by default */
+    position: absolute;
+    top: calc(100% + 1rem);
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.nav-links a {
+    display: block;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Hamburger Active States */
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.nav-links.active {
+    display: block; /* Show links when active */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Media Query for Small Screens */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 5%;
+        right: 5%;
+        width: 90%;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 12px;
+        padding: 1rem;
+        display: none; /* Hide by default */
+    }
+
+    .nav-links.active {
+        display: block; /* Show when active */
+    }
+}
+
+/* Media Query for Very Small Screens */
+@media screen and (max-width: 480px) {
+    .logo-container img {
+        height: 32px;
+        width: 32px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .navbar {
+        padding: 0.8rem 4%;
+    }
+}
+
+
+/* hero section style */
+.hero {
+    padding: 8rem 5% 4rem;
+    background: var(--gradient);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-text {
+    color: white;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* The download buttons */
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: white;
+    color: var(--dark);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn i {
+    font-size: 1.5rem;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.app-preview {
+    width: 100%;
+    height: 600px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Media query for small screens (mobile view) */
+@media (max-width: 768px) {
+    .download-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    /* Hide Windows, macOS, and Linux buttons */
+    .download-btn {
+        display: none;
+    }
+
+    /* Show only Android and iOS buttons */
+    .download-btn.android,
+    .download-btn.ios {
+        display: flex;
+    }
+}
+
+/* Media query for extra small screens (portrait mobile view) */
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .app-preview {
+        height: 400px;
+    }
+}
+
+/* features section style */
+        .features {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .features-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: var(--gradient); /* Fallback background */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Fallback for unsupported browsers */
+    color: transparent; /* Make text transparent to show the background */
+    background-clip: text;
+}
+
+/* Optional fallback background for non-supporting browsers */
+.features h2 {
+    color: #ff7e5f; /* Fallback solid color for unsupported browsers */
+}
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* For browsers that don't support background-clip: text */
+    background-clip: text; /* For future-proofing and non-WebKit browsers */
+}
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .platforms {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .platforms-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .platforms h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* For browsers that don't support background-clip: text */
+    background-clip: text; /* For future-proofing and non-WebKit browsers */
+}
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .platform-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .platform-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* For browsers that don't support background-clip: text */
+    background-clip: text; /* For future-proofing and non-WebKit browsers */
+}
+
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text {
+                text-align: center;
+            }
+
+            .download-buttons {
+                justify-content: center;
+            }
+
+            .app-preview {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .about-section {
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, rgba(255,105,180,0.05), rgba(65,105,225,0.05));
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #FF69B4, #4169E1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* For browsers that don't support background-clip: text */
+    background-clip: text; /* For future-proofing and non-WebKit browsers */
+    position: relative;
+}
+
+
+.about-content h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, #FF69B4, #4169E1);
+    border-radius: 2px;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.about-content .highlight {
+    color: #4169E1;
+    font-weight: 500;
+}
+
+.about-image-container {
+    position: relative;
+    padding: 2rem;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+    transform: translateY(-10px);
+}
+
+.about-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: -20px;
+    background: linear-gradient(135deg, #FF69B4, #4169E1);
+    border-radius: 20px;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+@media (max-width: 1024px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .about-image-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-image {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 4rem 5%;
+    }
+
+    .about-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+    }
+}    
+
+/* Base responsive styles */
+@media screen and (max-width: 1200px) {
+    .navbar-content,
+    .hero-content,
+    .features-content,
+    .platforms-content,
+    .footer-content {
+        max-width: 95%;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .app-preview {
+        height: 500px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        order: 1;
+    }
+
+    .hero-image {
+        order: 2;
+    }
+
+    .download-buttons {
+        justify-content: center;
+    }
+
+    .app-preview {
+        height: 400px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .platform-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Navigation adjustments */
+    .navbar {
+        padding: 0.8rem 4%;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 1rem 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--dark);
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        padding: 6rem 4% 3rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+
+    .download-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Features section adjustments */
+    .features {
+        padding: 4rem 4%;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        text-align: center;
+    }
+
+    /* Platforms section adjustments */
+    .platforms {
+        padding: 4rem 4%;
+    }
+
+    .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .platform-card {
+        padding: 1.5rem;
+    }
+
+    /* Footer adjustments */
+    .footer {
+        padding: 3rem 4%;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .logo-container img {
+        height: 32px;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .app-preview {
+        height: 300px;
+    }
+
+    .features h2,
+    .platforms h2 {
+        font-size: 2rem;
+    }
+
+    .platform-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+}
+
+/* Additional responsive utilities */
+.hide-on-mobile {
+    display: none;
+}
+
+@media screen and (min-width: 769px) {
+    .hide-on-desktop {
+        display: none;
+    }
+    
+    .hide-on-mobile {
+        display: block;
+    }
+}
+
+/* Mobile menu button styles */
+.mobile-menu-btn {
+    display: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.mobile-menu-btn:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Improved image handling */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.app-preview {
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Image containers */
+.hero-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.about-image-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+/* Logo image specific styles */
+.logo-container img {
+    height: 32px;
+    width: auto;
+    min-width: 32px;
+    border-radius: 6px;
+}
+
+/* Media Queries for Image Sizing */
+@media screen and (max-width: 768px) {
+    .app-preview {
+        max-height: 50vh;
+        margin: 0 auto;
+    }
+
+    .about-image {
+        max-height: 40vh;
+    }
+
+    .hero-image {
+        max-width: 90%;
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .app-preview {
+        max-height: 40vh;
+    }
+
+    .about-image {
+        max-height: 30vh;
+    }
+
+    .logo-container img {
+        height: 28px;
+        min-width: 28px;
+    }
+}
+    </style>
+
+
+</head>
+<body>
+
+
+    <!-- navbar section -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo-container">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/003/659/019/small_2x/pink-blue-k-alphabet-letter-logo-for-business-and-company-with-gradient-design-pastel-colour-template-for-corporate-identity-vector.jpg" alt="Karvaan Logo">
+                <span class="logo-text">Karvaan</span>
+            </div>
+            
+            <div class="menu-container">
+                <button class="hamburger" aria-label="Toggle menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+    
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="features.html">Features</a>
+                    <a href="co.html">courses</a>
+                    <a href="support.html">Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+<!-- hero section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Transform Your Learning Journey with Karvaan</h1>
+            <p>Access over 3,000+ degree options from 500+ leading universities. Start your education journey today with our state-of-the-art learning platform.</p>
+            <div class="download-buttons">
+                <!-- Windows, macOS, Linux buttons hidden on small screens -->
+                <a href="#download-windows" class="download-btn">
+                    <i class="fab fa-windows"></i>
+                    <span>Windows</span>
+                </a>
+                <a href="#download-mac" class="download-btn">
+                    <i class="fab fa-apple"></i>
+                    <span>macOS</span>
+                </a>
+                <a href="#download-linux" class="download-btn">
+                    <i class="fab fa-linux"></i>
+                    <span>Linux</span>
+                </a>
+                <!-- Only Android and iOS buttons are shown on small screens -->
+                <a href="#download-android" class="download-btn android">
+                    <i class="fab fa-android"></i>
+                    <span>Android</span>
+                </a>
+                <a href="#download-ios" class="download-btn ios">
+                    <i class="fab fa-apple"></i>
+                    <span>iOS</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="app-preview">
+                <img src="https://images-platform.99static.com/0CJF2nY8X-txC2a85KyYe2Tfc_c=/0x0:2000x2000/600x600/99designs-contests-attachments/154/154353/attachment_154353471" alt="Karvaan App Preview">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- about us section -->
+    <section class="about-section">
+      <div class="about-container">
+          <div class="about-content">
+              <h2>Welcome to KARVAAN</h2>
+              <p>
+                  KARVAAN is an innovative EdTech startup that empowers you to learn any skill you want—whether it's a new hobby or a 
+                  <span class="highlight">professional degree</span>. We offer <span class="highlight">3000+ courses</span>, including university degree courses from top institutions like MIT, Harvard, and many others—all for free.
+              </p>
+              <p>
+                  For customized degrees, or to select from multiple degree options, a subscription is required, starting as low as 
+                  <span class="highlight">2 $ per month</span>. With our community feature, interact with fellow learners, share ideas, join projects, and create something together.
+              </p>
+              <p>
+                  Every 6 months, the top 3 ideas will receive a <span class="highlight">$10,000 prize</span>. Start your learning journey today with KARVAAN!
+              </p>
+          </div>
+          <div class="about-image-container">
+              <img src="https://static.vecteezy.com/system/resources/thumbnails/003/659/019/small_2x/pink-blue-k-alphabet-letter-logo-for-business-and-company-with-gradient-design-pastel-colour-template-for-corporate-identity-vector.jpg" alt="Karvaan Logo" class="about-image">
+              <div class="about-decoration"></div>
+          </div>
+      </div>
+  </section>
+
+
+<!-- features section -->
+    <section class="features">
+        <div class="features-content">
+            <h2>Why Choose Karvaan?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>3000+ Degree Options</h3>
+                    <p>Choose from a vast selection of accredited degrees across multiple disciplines.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-university"></i>
+                    <h3>500+ Universities</h3>
+                    <p>Learn from world-renowned institutions including Harvard, MIT, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book-reader"></i>
+                    <h3>25+ Fields of Study</h3>
+                    <p>Explore diverse academic fields and find your perfect specialization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- platform section -->
+    <section class="platforms">
+        <div class="platforms-content">
+            <h2>Available on All Platforms</h2>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <i class="fab fa-windows"></i>
+                    <h3>Windows</h3>
+                    <p>Windows 10 & 11</p>
+                </div>
+                <div class="platform-card">
+                    <i class="fab fa-apple"></i>
+                    <h3>macOS</h3>
+                    <p>macOS 11 & later</p>
+                </div>
+                <div class="platform-card">
+                    <i class="fab fa-linux"></i>
+                    <h3>Linux</h3>
+                    <p>Major distributions</p>
+                </div>
+                <div class="platform-card">
+                    <i class="fab fa-android"></i>
+                    <h3>Android</h3>
+                    <p>Android 8.0 & later</p>
+                </div>
+                <div class="platform-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>iOS</h3>
+                    <p>iOS 14 & later</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- footer section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Karvaan</h4>
+                <ul>
+                    <li><a href="story.html">My Story</a></li>
+                   
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#windows">Windows App</a></li>
+                    <li><a href="#macos">macOS App</a></li>
+                    <li><a href="#linux">Linux App</a></li>
+                    <li><a href="#mobile">Mobile Apps</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="support.html">Help Center</a></li>
+                    <li><a href="support.html">Contact Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- java script code -->
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Prevent menu closing when clicking inside nav-links
+    navLinks.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+  </script>
+</body>
+</html>
