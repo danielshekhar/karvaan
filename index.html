@@ -934,28 +934,28 @@ img {
             <h1>Transform Your Learning Journey with Karvaan</h1>
             <p>Access over 3,000+ degree options from 500+ leading universities. Start your education journey today with our state-of-the-art learning platform.</p>
             <div class="download-buttons">
-                <!-- Windows, macOS, Linux buttons hidden on small screens -->
-                <a href="#download-windows" class="download-btn">
+                <!-- Windows, macOS, Linux icons -->
+                <div class="download-btn" id="platformWindows">
                     <i class="fab fa-windows"></i>
                     <span>Windows</span>
-                </a>
-                <a href="#download-mac" class="download-btn">
+                </div>
+                <div class="download-btn" id="platformMac">
                     <i class="fab fa-apple"></i>
                     <span>macOS</span>
-                </a>
-                <a href="#download-linux" class="download-btn">
+                </div>
+                <div class="download-btn" id="platformLinux">
                     <i class="fab fa-linux"></i>
                     <span>Linux</span>
-                </a>
-                <!-- Only Android and iOS buttons are shown on small screens -->
-                <a href="#download-android" class="download-btn android">
+                </div>
+                <!-- Only Android and iOS icons -->
+                <div class="download-btn android" id="platformAndroid">
                     <i class="fab fa-android"></i>
                     <span>Android</span>
-                </a>
-                <a href="#download-ios" class="download-btn ios">
+                </div>
+                <div class="download-btn ios" id="platformIOS">
                     <i class="fab fa-apple"></i>
                     <span>iOS</span>
-                </a>
+                </div>
             </div>
         </div>
         <div class="hero-image">
@@ -965,6 +965,76 @@ img {
         </div>
     </div>
 </section>
+
+<script>
+    // Function to handle download based on platform
+    function handleDownload(platform) {
+        var userAgent = navigator.userAgent.toLowerCase();
+
+        switch(platform) {
+            case 'windows':
+                if (userAgent.indexOf('win') !== -1) {
+                    window.location.href = 'https://download.gimp.org/mirror/pub/gimp/v2.10/windows/gimp-2.10.30-setup.exe'; // Replace with your Windows download link
+                } else {
+                    alert('This is a Windows download. You are not on Windows.');
+                }
+                break;
+            case 'mac':
+                if (userAgent.indexOf('mac') !== -1) {
+                    window.location.href = 'https://download.gimp.org/mirror/pub/gimp/v2.10/osx/gimp-2.10.30-x86_64.dmg'; // Replace with your macOS download link
+                } else {
+                    alert('This is a macOS download. You are not on macOS.');
+                }
+                break;
+            case 'linux':
+                if (userAgent.indexOf('linux') !== -1) {
+                    window.location.href = 'https://download.gimp.org/mirror/pub/gimp/v2.10/linux/gimp-2.10.30-x86_64.tar.bz2'; // Replace with your Linux download link
+                } else {
+                    alert('This is a Linux download. You are not on Linux.');
+                }
+                break;
+            case 'android':
+                if (userAgent.indexOf('android') !== -1) {
+                    alert('Android installations must be done through the Play Store.');
+                    window.location.href = 'https://play.google.com/store/apps/details?id=org.gimp.gimp'; // Replace with your Android Play Store link
+                } else {
+                    alert('This is an Android download. You are not on Android.');
+                }
+                break;
+            case 'ios':
+                if (userAgent.indexOf('iphone') !== -1 || userAgent.indexOf('ipad') !== -1) {
+                    alert('iOS installations must be done through the App Store.');
+                    window.location.href = 'https://apps.apple.com/us/app/gimp/id1440084696'; // Replace with your iOS App Store link
+                } else {
+                    alert('This is an iOS download. You are not on iOS.');
+                }
+                break;
+            default:
+                alert('Unsupported platform!');
+        }
+    }
+
+    // Add event listeners for each platform icon
+    document.getElementById('platformWindows').addEventListener('click', function() {
+        handleDownload('windows');
+    });
+
+    document.getElementById('platformMac').addEventListener('click', function() {
+        handleDownload('mac');
+    });
+
+    document.getElementById('platformLinux').addEventListener('click', function() {
+        handleDownload('linux');
+    });
+
+    document.getElementById('platformAndroid').addEventListener('click', function() {
+        handleDownload('android');
+    });
+
+    document.getElementById('platformIOS').addEventListener('click', function() {
+        handleDownload('ios');
+    });
+</script>
 
 
 
